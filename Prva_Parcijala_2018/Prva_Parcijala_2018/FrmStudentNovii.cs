@@ -59,10 +59,10 @@ namespace Prva_Parcijala_2018
                     Ime = txtIme.Text,
                     Prezime = txtPrezime.Text,
                     Email = txtEmail.Text,
-                    Predmeti = GenerisiPredmete(),
+                    Predmeti = InMemoryDb.GenerisiPredmete(),
                     image = pbStudentSlika.Image,
-                    Prosjek  = _Prosjek,
-                    BrojPolozenih  = _brojPolozenih,
+                    Prosjek = InMemoryDb._Prosjek,
+                    BrojPolozenih = InMemoryDb._TrenutnoPredmeta,
                 };
                 _brojPolozenih = 0;
                 InMemoryDb.Registrovani.Add(s);

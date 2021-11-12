@@ -6,32 +6,80 @@ namespace Prva_Parcijala_2018
     internal class InMemoryDb
     {
         public static List<Student> Registrovani { get; set; }
-        public static List<Predmet> Predmeti { get; set; } = GenerisiPredmete();
+        public static List<Predmet> Predmeti { get; set; }
 
-        public double Prosjek { get; set; }
-        private static List<Predmet> GenerisiPredmete()
+        public static double _Prosjek { get; set; }
+        public static int _TrenutnoPredmeta { get; set; }
+
+        public static List<Predmet> GenerisiPredmete()
         {
             Predmeti = new List<Predmet>();
             int brojac = 1;
-            for (int i = 0; i < 5; i++)
+            Random r = new Random();
+            int rand = r.Next(6, 10);
+            _TrenutnoPredmeta = rand;
+
+            for (int i = 0; i < rand; i++)
             {
-                Random r = new Random();
                 var p = new Predmet()
                 {
                     Naziv = $"Predmet {brojac}",
-                    Ocjena = r.Next(6, 10),
+                    Ocjena = r.Next(6,10),
                     _DateTime = DateTime.Now.ToUniversalTime(),
                 };
                 Predmeti.Add(p);
                 brojac++;
             }
+
+            IzracunajProsjek(Predmeti);
             return Predmeti;
         }
-
+        static void IzracunajProsjek(List<Predmet> predmeti)
+        {
+            double sum = 0;
+            foreach (var p in predmeti)
+                sum += p.Ocjena;
+            _Prosjek = Math.Round((sum) / _TrenutnoPredmeta, 2);
+        }
         static InMemoryDb()
         {
             Registrovani = new List<Student>();
-            DodajDefault();
+            //DodajDefault();
+            DodajDefaultStudente();
+        }
+
+        private static void DodajDefaultStudente()
+        {
+            var s1 = new Student()
+            {
+                Ime = "Denis",
+                Prezime = "Music",
+                Email = "denis@edu.fit.ba",
+                Predmeti = GenerisiPredmete(),
+                Prosjek = _Prosjek,
+                BrojPolozenih = _TrenutnoPredmeta
+            };
+            Registrovani.Add(s1);
+            var s2 = new Student()
+            {
+                Ime = "Elmir",
+                Prezime = "Babović",
+                Email = "elmir@edu.fit.ba",
+                Predmeti = GenerisiPredmete(),
+                Prosjek = _Prosjek,
+                BrojPolozenih = _TrenutnoPredmeta
+            };
+            Registrovani.Add(s2);
+            var s3 = new Student()
+            {
+                Ime = "Emina",
+                Prezime = "Junuz",
+                Email = "emina@edu.fit.ba",
+                Predmeti = GenerisiPredmete(),
+                Prosjek = _Prosjek,
+                BrojPolozenih = _TrenutnoPredmeta
+            };
+            Registrovani.Add(s3);
         }
 
         private static void DodajDefault()
