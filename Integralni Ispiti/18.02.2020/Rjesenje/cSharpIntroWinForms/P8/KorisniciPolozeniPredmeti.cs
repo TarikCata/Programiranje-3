@@ -1,14 +1,9 @@
-﻿using cSharpIntroWinForms.P10;
+﻿using cSharpIntroWinForms.IspitIB200252;
+using cSharpIntroWinForms.P10;
 using cSharpIntroWinForms.P9;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace cSharpIntroWinForms.P8
@@ -48,7 +43,9 @@ namespace cSharpIntroWinForms.P8
         private void btnDodajPolozeni_Click(object sender, EventArgs e)
         {
             var premdet = cmbPredmeti.SelectedItem as Predmeti;
-            if (!zabranjenoDupliciranje(premdet))
+            var godina = godStudija.SelectedItem as GodinaStudija;
+
+            if (!zabranjenoDupliciranje(premdet , godina))
                 return;
 
             var kp = new KorisniciPredmeti()
@@ -63,13 +60,13 @@ namespace cSharpIntroWinForms.P8
             konekcijaNaBazu.SaveChanges();
             UcitajPolozenePredmete();
         }
-        private bool zabranjenoDupliciranje(Predmeti predmet)
+        private bool zabranjenoDupliciranje(Predmeti predmet,GodinaStudija godinaStudija)
         {
             foreach (var polozeni in korisnik.Uspjeh)
             {
-                if (polozeni.Predmet.Naziv == predmet.Naziv)
+                if (polozeni.Predmet.Naziv == predmet.Naziv /* && polozeni.Godina.id == godinaStudija.id*/ )
                 {
-                    MessageBox.Show("Ne mozete dodati isti predmet na istoj godini!","INFO",MessageBoxButtons.OK);
+                    MessageBox.Show("Ne mozete dodati isti predmet na istoj godini!","INFO",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return false;
                 }
             }
