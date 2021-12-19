@@ -38,6 +38,8 @@
             this.txtPretraga = new System.Windows.Forms.TextBox();
             this.cbAdmin = new System.Windows.Forms.CheckBox();
             this.cmbSpolovi = new System.Windows.Forms.ComboBox();
+            this.txtAsync = new System.Windows.Forms.TextBox();
+            this.btnAsync = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,11 +151,30 @@
             this.cmbSpolovi.TabIndex = 5;
             this.cmbSpolovi.SelectedIndexChanged += new System.EventHandler(this.cmbSpolovi_SelectedIndexChanged);
             // 
+            // txtAsync
+            // 
+            this.txtAsync.Location = new System.Drawing.Point(12, 373);
+            this.txtAsync.Name = "txtAsync";
+            this.txtAsync.Size = new System.Drawing.Size(178, 22);
+            this.txtAsync.TabIndex = 6;
+            // 
+            // btnAsync
+            // 
+            this.btnAsync.Location = new System.Drawing.Point(222, 373);
+            this.btnAsync.Name = "btnAsync";
+            this.btnAsync.Size = new System.Drawing.Size(75, 23);
+            this.btnAsync.TabIndex = 7;
+            this.btnAsync.Text = "Suma";
+            this.btnAsync.UseVisualStyleBackColor = true;
+            this.btnAsync.Click += new System.EventHandler(this.btnAsync_Click);
+            // 
             // KorisniciAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 394);
+            this.ClientSize = new System.Drawing.Size(923, 407);
+            this.Controls.Add(this.btnAsync);
+            this.Controls.Add(this.txtAsync);
             this.Controls.Add(this.cmbSpolovi);
             this.Controls.Add(this.cbAdmin);
             this.Controls.Add(this.txtPretraga);
@@ -181,5 +202,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn Polozeni;
         private System.Windows.Forms.CheckBox cbAdmin;
         private System.Windows.Forms.ComboBox cmbSpolovi;
+        private System.Windows.Forms.TextBox txtAsync;
+        private System.Windows.Forms.Button btnAsync;
     }
 }

@@ -4,6 +4,7 @@ using cSharpIntroWinForms.P9;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace cSharpIntroWinForms
@@ -94,10 +95,6 @@ namespace cSharpIntroWinForms
         private int admin = 0;
         private void cbAdmin_CheckedChanged(object sender, EventArgs e)
         {
-            //var rez = konekcijaNaBazu.Korisnici.Where(x => x.Admin == true).ToList();
-            //LoadData(rez);
-
-
             if (admin % 2 == 0)
             {
                 var korisnici = new List<Korisnik>();
@@ -135,6 +132,23 @@ namespace cSharpIntroWinForms
                     frm.ShowDialog();
                 }
             }
+        }
+
+        private void btnAsync_Click(object sender, EventArgs e)
+        {
+            if (txtAsync.Text == string.Empty)
+                return;
+            var n = int.Parse(txtAsync.Text);
+            var suma = 0;
+            var izvrasavanje = Task.Run(() =>
+            {
+                for (int i = 1; i <= n; i++)
+                {
+                    suma += i;
+                }
+            });
+            var cekanje = izvrasavanje.GetAwaiter();
+            cekanje.OnCompleted(() => MessageBox.Show($"Suma brojeva od 1 do {n} je: {suma}"));
         }
     }
 }

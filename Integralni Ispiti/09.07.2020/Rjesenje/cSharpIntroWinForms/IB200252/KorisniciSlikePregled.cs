@@ -1,13 +1,7 @@
 ﻿using cSharpIntroWinForms.P10;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace cSharpIntroWinForms.IB200252
@@ -15,6 +9,8 @@ namespace cSharpIntroWinForms.IB200252
     public partial class KorisniciSlikePregled : Form
     {
         private Korisnik korisnik;
+
+        private KorisniciSlike KorisnikSlika { get; set; } 
 
         public KorisniciSlikePregled()
         {
@@ -83,12 +79,8 @@ namespace cSharpIntroWinForms.IB200252
             {
                 string putanja = ofd.FileName;
                 Image img = Image.FromFile(putanja);
-                var ks = new KorisniciSlike()
-                {
-                    korisnik = korisnik,
-                    slika = ImageToByte(img)
-                };
-                korisnik.Slike.Add(ks);
+                KorisnikSlika = new KorisniciSlike() { korisnik = korisnik, slika = ImageToByte(img)};
+                korisnik.Slike.Add(KorisnikSlika);
                 DLWMS.DB.SaveChanges();
             }
             LoadData();
