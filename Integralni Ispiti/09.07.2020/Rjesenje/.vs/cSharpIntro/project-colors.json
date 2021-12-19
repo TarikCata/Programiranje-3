@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "bfafc73a-948a-4731-bc51-bc84ccd88b31": {
+      "ProjectGuid": "bfafc73a-948a-4731-bc51-bc84ccd88b31",
+      "DisplayName": "cSharpIntroWinForms",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
