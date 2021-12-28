@@ -89,12 +89,12 @@ namespace cSharpIntroWinForms.IB200252
         private void dgvPredmeti_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var obj = dgvPredmeti.CurrentRow.DataBoundItem as KorisniciPredmeti;
+            
+            var korisnik = konekcija.Korisnici.Where(x => x.Id == obj.Korisnik.Id).FirstOrDefault();
 
-            //var korisnik = konekcija.Korisnici.Where(x => x.Id == obj.Korisnik.Id) as Korisnik;
             if (e.ColumnIndex == 4)
             {
-                var frm = new frmPorukeBrojIndeksa(obj);
-                this.Hide();
+                var frm = new frmPorukeBrojIndeksa(korisnik);
                 frm.ShowDialog();
             }
         }

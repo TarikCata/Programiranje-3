@@ -18,7 +18,6 @@ namespace cSharpIntroWinForms.IB200252
 
         private KonekcijaNaBazu konekcija = DLWMS.DB;
 
-        //private KorisniciPredmeti obj;
 
         public frmPorukeBrojIndeksa()
         {
@@ -26,12 +25,12 @@ namespace cSharpIntroWinForms.IB200252
             dgvPoruke.AutoGenerateColumns = false;
         }
 
-        //public frmPorukeBrojIndeksa(Korisnik korisnik) : this()
-        //{
-        //    this.korisnik = korisnik;
-        //    Ucitaj();
-        //    lblKomunikacija.Text += $"{korisnik.Ime} {korisnik.Prezime}";
-        //}
+        public frmPorukeBrojIndeksa(Korisnik korisnik) : this()
+        {
+            this.korisnik = korisnik;
+            Ucitaj();
+            lblKomunikacija.Text += $"{korisnik.Ime} {korisnik.Prezime}";
+        }
 
         //public frmPorukeBrojIndeksa(KorisniciPoruke korisniciPoruke) : this()
         //{
@@ -40,19 +39,19 @@ namespace cSharpIntroWinForms.IB200252
         //    lblKomunikacija.Text += $"{this.korisnik.Ime} {this.korisnik.Prezime}";
         //}
 
-        public frmPorukeBrojIndeksa(KorisniciPredmeti obj)
-        {
-            this.korisnik = obj.Korisnik;
-            Ucitaj();
-            lblKomunikacija.Text += $"{this.korisnik.Ime} {this.korisnik.Prezime}";
-        }
+        //public frmPorukeBrojIndeksa(KorisniciPredmeti obj)
+        //{
+        //    this.korisnik = obj.Korisnik;
+        //    Ucitaj();
+        //    lblKomunikacija.Text += $"{this.korisnik.Ime} {this.korisnik.Prezime}";
+        //}
 
         private void Ucitaj()
         {
             try
             {
                 dgvPoruke.DataSource = null;
-                dgvPoruke.DataSource = korisnik.Poruke;
+                dgvPoruke.DataSource = korisnik.Poruke.ToList();
             }
             catch (Exception ex)
             {

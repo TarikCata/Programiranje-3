@@ -8,7 +8,7 @@ namespace cSharpIntroWinForms.IB200252
 {
     public class KorisniciPoruke
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public virtual Korisnik Korisnik { get; set; }  
         public string Sadrzaj { get; set; }   
         public string Datum { get; set; }   
