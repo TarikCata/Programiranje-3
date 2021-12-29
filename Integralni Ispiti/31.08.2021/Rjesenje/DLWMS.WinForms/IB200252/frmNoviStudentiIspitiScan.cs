@@ -17,29 +17,35 @@ namespace DLWMS.WinForms.IB200252
 
         private KonekcijaNaBazu db = DLWMSdb.Baza;
         private StudentiIspitiScan ispitiScan;
-        private bool edit = false;
-
+        private bool pregled = false;
         private Student student;
+
         public frmNoviStudentiIspitiScan()
         {
             InitializeComponent();
-            cmbPredmeti.DataSource = db.Predmet.ToList();
         }
         public frmNoviStudentiIspitiScan(Student s) : this()
         {
             this.student = s;
+            cmbPredmeti.DataSource = db.Predmet.ToList();
         }
         public frmNoviStudentiIspitiScan(StudentiIspitiScan scan) : this()
         {
             this.ispitiScan = scan;
-            this.student = scan.Student;
             UcitajPodatke();
-            edit = true;
+            pregled = true;
         }
 
         private void UcitajPodatke()
         {
-            
+            cmbPredmeti.Text = ispitiScan.Predmet.ToString();
+            cmbPredmeti.Enabled = false;
+            txtNapomena.Text = ispitiScan.Napomena;
+            txtNapomena.ReadOnly = true;
+            pbSlika.Image = ImageHelper.FromByteToImage(ispitiScan.Scan);
+            pbSlika.Enabled = false;
+            cbVarao.Checked = ispitiScan.Varao;
+            cbVarao.Enabled = false;
         }
 
         private void btnSpasi_Click(object sender, EventArgs e)
@@ -47,25 +53,17 @@ namespace DLWMS.WinForms.IB200252
             
             if(validiraj(txtNapomena,pbSlika))
             {
-                if(!edit)
+                if (!pregled)
+                {
                     ispitiScan = new StudentiIspitiScan();
-
-                ispitiScan.Student =  this.student;
-                ispitiScan.Predmet = cmbPredmeti.SelectedItem as Predmet;
-                ispitiScan.Scan = ImageHelper.FromImageToByte(pbSlika.Image);
-                ispitiScan.Napomena = txtNapomena.Text;
-                ispitiScan.Varao = cbVarao.Checked;
-
-                if (edit)
-                {
-                    db.Entry(ispitiScan).State = System.Data.Entity.EntityState.Modified;
-                    MessageBox.Show("Uspjesan edit podataka!","INFO",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                }
-                else
-                {
+                    ispitiScan.Student = this.student;
+                    ispitiScan.Predmet = cmbPredmeti.SelectedItem as Predmet;
+                    ispitiScan.Scan = ImageHelper.FromImageToByte(pbSlika.Image);
+                    ispitiScan.Napomena = txtNapomena.Text;
+                    ispitiScan.Varao = cbVarao.Checked;
                     db.StudentiIspitiScan.Add(ispitiScan);
                     db.SaveChanges();
-                    MessageBox.Show("Uspjesan dodan podatak!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Uspjesno dodan podatak!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 Close();
             }
@@ -98,5 +96,6 @@ namespace DLWMS.WinForms.IB200252
                 pbSlika.Image = slika;
             }
         }
+
     }
 }

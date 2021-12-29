@@ -103,6 +103,7 @@
             // Napomena
             // 
             this.Napomena.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Napomena.DataPropertyName = "Napomena";
             this.Napomena.HeaderText = "Napomena";
             this.Napomena.MinimumWidth = 6;
             this.Napomena.Name = "Napomena";
@@ -119,7 +120,7 @@
             // 
             // Scan
             // 
-            this.Scan.DataPropertyName = "Scan";
+            this.Scan.DataPropertyName = "Slika";
             this.Scan.HeaderText = "Scan";
             this.Scan.MinimumWidth = 6;
             this.Scan.Name = "Scan";

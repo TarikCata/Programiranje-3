@@ -28,7 +28,8 @@ namespace DLWMS.WinForms.IB200252
             try
             {
                 dgvIspiti.DataSource = null;
-                dgvIspiti.DataSource = db.StudentiIspitiScan.Where(x => x.Student.Id == s.Id).ToList();
+                var lista = db.StudentiIspitiScan.Where(x => x.Student.Id == s.Id).ToList();
+                dgvIspiti.DataSource = lista;
             }
             catch (Exception ex)
             {
@@ -59,13 +60,18 @@ namespace DLWMS.WinForms.IB200252
 
         private void dgvIspiti_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var scan = dgvIspiti.CurrentRow.DataBoundItem as StudentiIspitiScan;
+            this.Hide();
+            var scan = dgvIspiti.CurrentRow.DataBoundItem as StudentiIspitiScan ;
             new frmNoviStudentiIspitiScan(scan).ShowDialog();
+            this.Show();
         }
 
         private void btnDodajScan_Click(object sender, EventArgs e)
         {
+            this.Hide();
             new frmNoviStudentiIspitiScan(Student).ShowDialog();
+            UcitajPodatke(Student);
+            this.Show();
         }
     }
 }

@@ -41,7 +41,7 @@
             // 
             // btnSpasi
             // 
-            this.btnSpasi.Location = new System.Drawing.Point(448, 327);
+            this.btnSpasi.Location = new System.Drawing.Point(435, 306);
             this.btnSpasi.Name = "btnSpasi";
             this.btnSpasi.Size = new System.Drawing.Size(75, 28);
             this.btnSpasi.TabIndex = 0;
@@ -61,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(311, 55);
+            this.label2.Location = new System.Drawing.Point(267, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 16);
             this.label2.TabIndex = 2;
@@ -70,7 +70,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 119);
+            this.label3.Location = new System.Drawing.Point(12, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 16);
             this.label3.TabIndex = 3;
@@ -86,18 +86,18 @@
             // 
             // txtNapomena
             // 
-            this.txtNapomena.Location = new System.Drawing.Point(15, 142);
+            this.txtNapomena.Location = new System.Drawing.Point(15, 116);
             this.txtNapomena.Multiline = true;
             this.txtNapomena.Name = "txtNapomena";
-            this.txtNapomena.Size = new System.Drawing.Size(208, 137);
+            this.txtNapomena.Size = new System.Drawing.Size(208, 163);
             this.txtNapomena.TabIndex = 6;
             // 
             // pbSlika
             // 
             this.pbSlika.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.pbSlika.Location = new System.Drawing.Point(314, 104);
+            this.pbSlika.Location = new System.Drawing.Point(270, 47);
             this.pbSlika.Name = "pbSlika";
-            this.pbSlika.Size = new System.Drawing.Size(209, 175);
+            this.pbSlika.Size = new System.Drawing.Size(240, 232);
             this.pbSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSlika.TabIndex = 5;
             this.pbSlika.TabStop = false;
@@ -106,18 +106,18 @@
             // cbVarao
             // 
             this.cbVarao.AutoSize = true;
-            this.cbVarao.Location = new System.Drawing.Point(15, 327);
+            this.cbVarao.Location = new System.Drawing.Point(15, 306);
             this.cbVarao.Name = "cbVarao";
-            this.cbVarao.Size = new System.Drawing.Size(95, 20);
+            this.cbVarao.Size = new System.Drawing.Size(66, 20);
             this.cbVarao.TabIndex = 7;
-            this.cbVarao.Text = "checkBox1";
+            this.cbVarao.Text = "Varao";
             this.cbVarao.UseVisualStyleBackColor = true;
             // 
             // frmNoviStudentiIspitiScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 367);
+            this.ClientSize = new System.Drawing.Size(532, 367);
             this.Controls.Add(this.cbVarao);
             this.Controls.Add(this.txtNapomena);
             this.Controls.Add(this.pbSlika);

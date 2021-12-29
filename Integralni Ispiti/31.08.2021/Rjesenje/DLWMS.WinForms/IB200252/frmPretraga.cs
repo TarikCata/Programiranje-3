@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace DLWMS.WinForms.IB200252
 {
-    // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     public partial class frmPretraga : Form
     {
-        
         private KonekcijaNaBazu db = DLWMSdb.Baza;
         private List<StudentiPolozeni> studentiPolozeni = new List<StudentiPolozeni>();
 
@@ -124,9 +122,10 @@ namespace DLWMS.WinForms.IB200252
             {
                 var obj = dgvStdPredmeti.CurrentRow.DataBoundItem as StudentiPolozeni;
                 var std = obj.Student;
-                var frm = new frmKoriscniciIspitiScan(std);
-                frm.ShowDialog();
+                this.Hide();
+                new frmKoriscniciIspitiScan(std).ShowDialog();
             }
+            this.Show();
         }
     }
 }
