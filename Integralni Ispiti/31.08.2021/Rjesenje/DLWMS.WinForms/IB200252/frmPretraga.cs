@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DLWMS.WinForms.IB200252
@@ -13,10 +14,13 @@ namespace DLWMS.WinForms.IB200252
         private KonekcijaNaBazu db = DLWMSdb.Baza;
         private List<StudentiPolozeni> studentiPolozeni = new List<StudentiPolozeni>();
 
+        private List<string> samoglasnici = new List<string>() { "a","e","i","o","u"};
+        private List<string> znakovi = new List<string> { "?", "!", "<", ">", "*" };
         public frmPretraga()
         {
             InitializeComponent();
             dgvStdPredmeti.AutoGenerateColumns = false;
+            textBox1.MaxLength = 500;
         }
 
         private void frmPretraga_Load(object sender, EventArgs e)
@@ -127,5 +131,39 @@ namespace DLWMS.WinForms.IB200252
             }
             this.Show();
         }
+        
+        
+        async private void btnGenerisi_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == string.Empty)
+                return;
+            var txt = textBox1.Text.ToLower();
+            int brojac1 = 0, brojac2 = 0, brojac3 = 0;
+            int l1 = samoglasnici.Count;
+            await Task.Run(() =>
+            {
+
+                brojac1 = txt.Where(x => samoglasnici.Contains(x.ToString())).Count();
+                brojac2 = txt.Where(x => znakovi.Contains(x.ToString())).Count();
+                brojac3 = txt.Length - brojac1 - brojac2;
+                Action action = () => ucitajLbl(brojac1,brojac2,brojac3);
+                BeginInvoke(action);
+            });
+        }
+
+        private void ucitajLbl(int brojac1, int brojac2, int brojac3)
+        {
+            lblSuglasnici.Text = $"Broj samoglasnika {brojac1}";
+            label2.Text = $"Broj suglasnika {brojac3}";
+            lblZnakovi.Text = $"Broj znakova {brojac2}";
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            int brojac = textBox1.Text.Length;
+            lblKarakteri.Text = $"Broj karaktera {brojac}";
+        }
     }
 }
+
+
