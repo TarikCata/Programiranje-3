@@ -52,7 +52,7 @@
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -89,22 +89,36 @@
     <Compile Include="P10\MboxHelper.cs" />
     <Compile Include="P10\Predmeti.cs" />
     <Compile Include="P10\Spolovi.cs" />
-    <Compile Include="P4\DBInMemory.cs" />
     <Compile Include="P6\KorisniciAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="P6\KorisniciAdmin.Designer.cs">
       <DependentUpon>KorisniciAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="P4\DBInMemory.cs" />
+    <Compile Include="P4\Korisnik.cs" />
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P4\Registracija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P4\Registracija.Designer.cs">
+      <DependentUpon>Registracija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P4\Validator.cs" />
     <Compile Include="P8\KorisniciPolozeniPredmeti.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="P8\KorisniciPolozeniPredmeti.Designer.cs">
       <DependentUpon>KorisniciPolozeniPredmeti.cs</DependentUpon>
     </Compile>
-    <Compile Include="P4\Korisnik.cs" />
     <Compile Include="P8\PolozeniPredmet.cs" />
     <Compile Include="P8\Predmet.cs" />
+    <Compile Include="P9\ImageHelper.cs" />
     <Compile Include="P9\KonekcijaNaBazu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +127,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P6\KorisniciAdmin.resx">
       <DependentUpon>KorisniciAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P4\Registracija.resx">
+      <DependentUpon>Registracija.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P8\KorisniciPolozeniPredmeti.resx">
       <DependentUpon>KorisniciPolozeniPredmeti.cs</DependentUpon>
@@ -131,6 +151,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\cSharpIntroWinForms.P8.KorisniciPolozeniPredmeti.datasource" />
+    <None Include="Properties\DataSources\KorisniciAdmin.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

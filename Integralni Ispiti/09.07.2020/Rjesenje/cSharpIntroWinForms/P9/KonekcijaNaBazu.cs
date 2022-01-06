@@ -29,7 +29,8 @@ namespace cSharpIntroWinForms.P9
         public DbSet<Spolovi> Spolovi { get; set; }
         public DbSet<Predmeti> Predmeti { get; set; }
         public DbSet<KorisniciPredmeti> KorisniciPredmeti { get; set; }
-        public virtual DbSet<KorisniciSlike> KorisniciSlike { get; set; }
+        public DbSet<KorisniciSlike> KorisniciSlike { get; set; }
+
     }
 
     [Table("Studenti")]

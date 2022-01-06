@@ -35,10 +35,9 @@
             this.Predmet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbOcjene = new System.Windows.Forms.ComboBox();
-            this.cbUcitajNepolozene = new System.Windows.Forms.CheckBox();
-            this.btnASYNC = new System.Windows.Forms.Button();
+            this.cmbGodineStudija = new System.Windows.Forms.ComboBox();
             this.btnPrintajUvjerenje = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPolozeniPredmeti)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,9 +51,9 @@
             // 
             // dtpDatumPolaganja
             // 
-            this.dtpDatumPolaganja.Location = new System.Drawing.Point(344, 10);
+            this.dtpDatumPolaganja.Location = new System.Drawing.Point(400, 10);
             this.dtpDatumPolaganja.Name = "dtpDatumPolaganja";
-            this.dtpDatumPolaganja.Size = new System.Drawing.Size(200, 20);
+            this.dtpDatumPolaganja.Size = new System.Drawing.Size(144, 20);
             this.dtpDatumPolaganja.TabIndex = 2;
             // 
             // btnDodajPolozeni
@@ -75,7 +74,7 @@
             this.Predmet,
             this.Ocjena,
             this.Datum});
-            this.dgvPolozeniPredmeti.Location = new System.Drawing.Point(12, 71);
+            this.dgvPolozeniPredmeti.Location = new System.Drawing.Point(12, 38);
             this.dgvPolozeniPredmeti.Name = "dgvPolozeniPredmeti";
             this.dgvPolozeniPredmeti.ReadOnly = true;
             this.dgvPolozeniPredmeti.Size = new System.Drawing.Size(644, 202);
@@ -104,54 +103,38 @@
             this.Datum.Name = "Datum";
             this.Datum.ReadOnly = true;
             // 
-            // cmbOcjene
+            // cmbGodineStudija
             // 
-            this.cmbOcjene.FormattingEnabled = true;
-            this.cmbOcjene.Location = new System.Drawing.Point(238, 9);
-            this.cmbOcjene.Name = "cmbOcjene";
-            this.cmbOcjene.Size = new System.Drawing.Size(100, 21);
-            this.cmbOcjene.TabIndex = 5;
-            // 
-            // cbUcitajNepolozene
-            // 
-            this.cbUcitajNepolozene.AutoSize = true;
-            this.cbUcitajNepolozene.Location = new System.Drawing.Point(12, 36);
-            this.cbUcitajNepolozene.Name = "cbUcitajNepolozene";
-            this.cbUcitajNepolozene.Size = new System.Drawing.Size(111, 17);
-            this.cbUcitajNepolozene.TabIndex = 6;
-            this.cbUcitajNepolozene.Text = "Učitaj nepoložene";
-            this.cbUcitajNepolozene.UseVisualStyleBackColor = true;
-    
-            // 
-            // btnASYNC
-            // 
-            this.btnASYNC.Location = new System.Drawing.Point(12, 298);
-            this.btnASYNC.Name = "btnASYNC";
-            this.btnASYNC.Size = new System.Drawing.Size(75, 23);
-            this.btnASYNC.TabIndex = 7;
-            this.btnASYNC.Text = "Run ASYNC";
-            this.btnASYNC.UseVisualStyleBackColor = true;
-
+            this.cmbGodineStudija.FormattingEnabled = true;
+            this.cmbGodineStudija.Location = new System.Drawing.Point(295, 9);
+            this.cmbGodineStudija.Name = "cmbGodineStudija";
+            this.cmbGodineStudija.Size = new System.Drawing.Size(99, 21);
+            this.cmbGodineStudija.TabIndex = 6;
             // 
             // btnPrintajUvjerenje
             // 
-            this.btnPrintajUvjerenje.Location = new System.Drawing.Point(500, 298);
+            this.btnPrintajUvjerenje.Location = new System.Drawing.Point(514, 246);
             this.btnPrintajUvjerenje.Name = "btnPrintajUvjerenje";
-            this.btnPrintajUvjerenje.Size = new System.Drawing.Size(149, 23);
+            this.btnPrintajUvjerenje.Size = new System.Drawing.Size(142, 23);
             this.btnPrintajUvjerenje.TabIndex = 7;
             this.btnPrintajUvjerenje.Text = "Printaj uvjerenje";
             this.btnPrintajUvjerenje.UseVisualStyleBackColor = true;
-
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(239, 9);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(50, 20);
+            this.textBox1.TabIndex = 8;
             // 
             // KorisniciPolozeniPredmeti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 333);
+            this.ClientSize = new System.Drawing.Size(661, 279);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnPrintajUvjerenje);
-            this.Controls.Add(this.btnASYNC);
-            this.Controls.Add(this.cbUcitajNepolozene);
-            this.Controls.Add(this.cmbOcjene);
+            this.Controls.Add(this.cmbGodineStudija);
             this.Controls.Add(this.dgvPolozeniPredmeti);
             this.Controls.Add(this.btnDodajPolozeni);
             this.Controls.Add(this.dtpDatumPolaganja);
@@ -177,9 +160,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Predmet;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ocjena;
         private System.Windows.Forms.DataGridViewTextBoxColumn Datum;
-        private System.Windows.Forms.ComboBox cmbOcjene;
-        private System.Windows.Forms.CheckBox cbUcitajNepolozene;
-        private System.Windows.Forms.Button btnASYNC;
+        private System.Windows.Forms.ComboBox cmbGodineStudija;
         private System.Windows.Forms.Button btnPrintajUvjerenje;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
