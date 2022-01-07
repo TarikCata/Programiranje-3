@@ -17,11 +17,10 @@ namespace cSharpIntroWinForms
 {
     public partial class KorisniciAdmin : Form
     {
-
         KonekcijaNaBazu konekcijaNaBazu = DLWMS.DB;
         bool preLoad = true;
         private List<Korisnik> sviKorisnici = new List<Korisnik>();
-       
+
         public KorisniciAdmin()
         {
             InitializeComponent();
@@ -29,12 +28,10 @@ namespace cSharpIntroWinForms
             cmbSpolovi.DataSource = konekcijaNaBazu.Spolovi.ToList();
             sviKorisnici = konekcijaNaBazu.Korisnici.ToList();
         }
-
         private void KorisniciAdmin_Load(object sender, EventArgs e)
         {
             LoadData();
         }
-
         private void LoadData(List<Korisnik> korisnici = null)
         {
             try
@@ -47,7 +44,6 @@ namespace cSharpIntroWinForms
                 MessageBox.Show(ex.Message + " " + ex.InnerException?.Message);
             }
         }
-
         private void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.ColumnIndex  == 5)
@@ -58,7 +54,6 @@ namespace cSharpIntroWinForms
                 this.Show();
             }    
         }
-
         private void cmbSpolovi_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(preLoad)
@@ -69,7 +64,6 @@ namespace cSharpIntroWinForms
             var spol = cmbSpolovi.SelectedItem as Spolovi;
             UcitajPoSpolovima(spol);
         }
-
         private void UcitajPoSpolovima(Spolovi spol)
         {
             var lista = new List<Korisnik>();
@@ -82,7 +76,6 @@ namespace cSharpIntroWinForms
             }
             LoadData(lista);
         }
-
         private void cbAdmin_CheckedChanged(object sender, EventArgs e)
         {
             if (cbAdmin.Checked)
@@ -90,13 +83,11 @@ namespace cSharpIntroWinForms
             else
                 LoadData();
         }
-
         private void ucitajAdmine()
         {
             var lista = konekcijaNaBazu.Korisnici.Where(x => x.Admin == cbAdmin.Checked).ToList();
             LoadData(lista);
         }
-
         private void txtPretraga_TextChanged(object sender, EventArgs e)
         {
             var lista = new List<Korisnik>();
@@ -104,13 +95,10 @@ namespace cSharpIntroWinForms
             foreach (var item in sviKorisnici)
             {
                 if(item.Ime.ToLower().Contains(txt) || item.Prezime.ToLower().Contains(txt))
-                {
-                    lista.Add(item);
-                }
+                   lista.Add(item);
             }
             LoadData(lista);
         }
-
         private void btnSuma_Click(object sender, EventArgs e)
         {
             if (txtSuma.Text == string.Empty)

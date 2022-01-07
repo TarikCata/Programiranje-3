@@ -15,8 +15,6 @@ namespace cSharpIntroWinForms.IB200252
     public partial class frmPretragaBrojIndeksa : Form
     {
         private KonekcijaNaBazu konekcija = DLWMS.DB;
-
-        private List<KorisniciPredmeti> predmeti = new List<KorisniciPredmeti>();
         public frmPretragaBrojIndeksa()
         {
             InitializeComponent();
@@ -27,14 +25,16 @@ namespace cSharpIntroWinForms.IB200252
         {
             LoadData();
         }
-
         private void LoadData(List<KorisniciPredmeti> k = null)
         {
             try
             {
                 dgvPredmeti.DataSource = null;
                 dgvPredmeti.DataSource = k ?? konekcija.KorisniciPredmeti.ToList();
-                IzracunajProsjek();
+                if(k != null)
+                    IzracunajProsjek(k);
+                else
+                    IzracunajProsjek(null);
             }
             catch (Exception ex)
             {
@@ -54,9 +54,7 @@ namespace cSharpIntroWinForms.IB200252
                 var s = Math.Round((suma / l.Count), 2);
                 label2.Text = $"Prosjek prikazanih ocjena: {s.ToString()}";
             }
-
         }
-
         private void txtPretraga_TextChanged(object sender, EventArgs e)
         {
             var txt = txtPretraga.Text.ToLower();
@@ -68,9 +66,7 @@ namespace cSharpIntroWinForms.IB200252
                     lista.Add(x);
             }
             LoadData(lista);
-            IzracunajProsjek(lista);
         }
-
         private void btnSumiraj_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == string.Empty)
@@ -85,18 +81,17 @@ namespace cSharpIntroWinForms.IB200252
             var cekanje = izvrsavanje.GetAwaiter();
             cekanje.OnCompleted(() => lblSuma.Text = suma.ToString());
         }
-
         private void dgvPredmeti_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var obj = dgvPredmeti.CurrentRow.DataBoundItem as KorisniciPredmeti;
+            //var obj = dgvPredmeti.CurrentRow.DataBoundItem as KorisniciPredmeti;
             
-            var korisnik = konekcija.Korisnici.Where(x => x.Id == obj.Korisnik.Id).FirstOrDefault();
+            //var korisnik = konekcija.Korisnici.Where(x => x.Id == obj.Korisnik.Id).FirstOrDefault();
 
-            if (e.ColumnIndex == 4)
-            {
-                var frm = new frmPorukeBrojIndeksa(korisnik);
-                frm.ShowDialog();
-            }
+            //if (e.ColumnIndex == 4)
+            //{
+            //    var frm = new frmPorukeBrojIndeksa(korisnik);
+            //    frm.ShowDialog();
+            //}
         }
     }
 }

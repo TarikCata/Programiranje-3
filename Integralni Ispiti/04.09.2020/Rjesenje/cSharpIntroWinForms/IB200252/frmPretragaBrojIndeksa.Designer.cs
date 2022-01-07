@@ -147,7 +147,7 @@
             // ImePrezime
             // 
             this.ImePrezime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ImePrezime.DataPropertyName = "Ime";
+            this.ImePrezime.DataPropertyName = "Korisnik";
             this.ImePrezime.HeaderText = "ImePrezime";
             this.ImePrezime.MinimumWidth = 6;
             this.ImePrezime.Name = "ImePrezime";
@@ -187,6 +187,7 @@
             this.Poruke.Name = "Poruke";
             this.Poruke.ReadOnly = true;
             this.Poruke.Text = "Poruke";
+            this.Poruke.UseColumnTextForButtonValue = true;
             this.Poruke.Width = 125;
             // 
             // frmPretragaBrojIndeksa

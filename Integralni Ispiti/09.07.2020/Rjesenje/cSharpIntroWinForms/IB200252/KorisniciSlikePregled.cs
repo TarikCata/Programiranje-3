@@ -36,6 +36,8 @@ namespace cSharpIntroWinForms.IB200252
             else
             {
                 korisniciSlike = k;
+                if (slike.Count != 0)
+                    slike = new List<Image>();
                 foreach (var x in korisniciSlike)
                     slike.Add(ImageHelper.FromByteToImage(x.Slika));
                 if (slike.Count == 0)
@@ -55,7 +57,6 @@ namespace cSharpIntroWinForms.IB200252
                 lblbrojSlika.Text = $"Slika {v}/{slike.Count}";
             }
         }
-
         private void pbSlika_Click(object sender, EventArgs e)
         {
             var ofd = new OpenFileDialog();
@@ -82,7 +83,6 @@ namespace cSharpIntroWinForms.IB200252
             }
             UcitajSliku(index);
         }
-
         private void btnLijevo_Click(object sender, EventArgs e)
         {
             index--;
