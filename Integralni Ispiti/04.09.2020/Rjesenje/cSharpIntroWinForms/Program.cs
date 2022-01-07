@@ -1,4 +1,4 @@
-﻿using cSharpIntroWinForms.IB200252;
+﻿using cSharpIntroWinForms.ISPITIB200252;
 using cSharpIntroWinForms.P9;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace cSharpIntroWinForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPretragaBrojIndeksa());
+            Application.Run(new frmPretraga());
         }
     }
 }

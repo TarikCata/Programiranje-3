@@ -77,19 +77,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IB200252\KorisniciPoruke.cs" />
-    <Compile Include="IB200252\frmPorukeBrojIndeksa.cs">
+    <Compile Include="ISPITIB200252\frmNovaPoruka.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IB200252\frmPorukeBrojIndeksa.Designer.cs">
-      <DependentUpon>frmPorukeBrojIndeksa.cs</DependentUpon>
+    <Compile Include="ISPITIB200252\frmNovaPoruka.Designer.cs">
+      <DependentUpon>frmNovaPoruka.cs</DependentUpon>
     </Compile>
-    <Compile Include="IB200252\frmPretragaBrojIndeksa.cs">
+    <Compile Include="ISPITIB200252\frmPretraga.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IB200252\frmPretragaBrojIndeksa.Designer.cs">
-      <DependentUpon>frmPretragaBrojIndeksa.cs</DependentUpon>
+    <Compile Include="ISPITIB200252\frmPretraga.Designer.cs">
+      <DependentUpon>frmPretraga.cs</DependentUpon>
     </Compile>
+    <Compile Include="ISPITIB200252\frmKorisniciPoruke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ISPITIB200252\frmKorisniciPoruke.Designer.cs">
+      <DependentUpon>frmKorisniciPoruke.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISPITIB200252\KorisniciPoruke.cs" />
     <Compile Include="P10\DLWMS.cs" />
     <Compile Include="P10\KorisniciPredmeti.cs" />
     <Compile Include="P10\MboxHelper.cs" />
@@ -128,11 +134,14 @@
     <Compile Include="P9\KonekcijaNaBazu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="IB200252\frmPorukeBrojIndeksa.resx">
-      <DependentUpon>frmPorukeBrojIndeksa.cs</DependentUpon>
+    <EmbeddedResource Include="ISPITIB200252\frmKorisniciPoruke.resx">
+      <DependentUpon>frmKorisniciPoruke.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IB200252\frmPretragaBrojIndeksa.resx">
-      <DependentUpon>frmPretragaBrojIndeksa.cs</DependentUpon>
+    <EmbeddedResource Include="ISPITIB200252\frmNovaPoruka.resx">
+      <DependentUpon>frmNovaPoruka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ISPITIB200252\frmPretraga.resx">
+      <DependentUpon>frmPretraga.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P6\KorisniciAdmin.resx">
       <DependentUpon>KorisniciAdmin.cs</DependentUpon>

@@ -1,4 +1,4 @@
-﻿using cSharpIntroWinForms.IB200252;
+﻿using cSharpIntroWinForms.ISPITIB200252;
 using cSharpIntroWinForms.P10;
 using System;
 using System.Collections.Generic;
@@ -25,11 +25,11 @@ namespace cSharpIntroWinForms.P9
         }
 
         public DbSet<Studenti> Studenti { get; set; }
-        public  DbSet<Korisnik> Korisnici { get; set; }
+        public DbSet<Korisnik> Korisnici { get; set; }
         public DbSet<Spolovi> Spolovi { get; set; }
         public DbSet<Predmeti> Predmeti { get; set; }
-        public  DbSet<KorisniciPredmeti> KorisniciPredmeti { get; set; }
-        public  DbSet<KorisniciPoruke> KorisniciPoruke { get; set; }
+        public DbSet<KorisniciPredmeti> KorisniciPredmeti { get; set; }
+        public DbSet<KorisniciPoruke> KorisniciPoruke { get; set; }
 
     }
 
