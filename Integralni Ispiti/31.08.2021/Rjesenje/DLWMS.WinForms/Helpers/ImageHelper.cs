@@ -14,8 +14,6 @@ namespace DLWMS.WinForms.Helpers
         }
         public static Image FromByteToImage(byte[] slika)
         {
-            if(slika == null)
-                return null;
             MemoryStream ms = new MemoryStream(slika);
             return Image.FromStream(ms);           
         }

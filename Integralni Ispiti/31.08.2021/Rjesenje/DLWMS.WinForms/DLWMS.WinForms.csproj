@@ -85,7 +85,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entiteti\StudentiPolozeni.cs" />
     <Compile Include="frmGlavna.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,17 +96,11 @@
     <Compile Include="Helpers\DLWMSdb.cs" />
     <Compile Include="Entiteti\StudentiPredmeti.cs" />
     <Compile Include="Entiteti\Uloge.cs" />
-    <Compile Include="IB200252\frmKoriscniciIspitiScan.cs">
+    <Compile Include="IB200252\frmNoviKorisniciIspiti.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IB200252\frmKoriscniciIspitiScan.Designer.cs">
-      <DependentUpon>frmKoriscniciIspitiScan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IB200252\frmNoviStudentiIspitiScan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IB200252\frmNoviStudentiIspitiScan.Designer.cs">
-      <DependentUpon>frmNoviStudentiIspitiScan.cs</DependentUpon>
+    <Compile Include="IB200252\frmNoviKorisniciIspiti.Designer.cs">
+      <DependentUpon>frmNoviKorisniciIspiti.cs</DependentUpon>
     </Compile>
     <Compile Include="IB200252\frmPretraga.cs">
       <SubType>Form</SubType>
@@ -115,7 +108,14 @@
     <Compile Include="IB200252\frmPretraga.Designer.cs">
       <DependentUpon>frmPretraga.cs</DependentUpon>
     </Compile>
-    <Compile Include="IB200252\StudentiIspitiScan.cs" />
+    <Compile Include="IB200252\frmScanIspitaBrojIndeksa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IB200252\frmScanIspitaBrojIndeksa.Designer.cs">
+      <DependentUpon>frmScanIspitaBrojIndeksa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IB200252\KorisniciIspitiScan.cs" />
+    <Compile Include="IB200252\PredmetiStudenti.cs" />
     <Compile Include="Izvjestaji\dsDLWMS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -169,14 +169,14 @@
     <EmbeddedResource Include="frmGlavna.resx">
       <DependentUpon>frmGlavna.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IB200252\frmKoriscniciIspitiScan.resx">
-      <DependentUpon>frmKoriscniciIspitiScan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IB200252\frmNoviStudentiIspitiScan.resx">
-      <DependentUpon>frmNoviStudentiIspitiScan.cs</DependentUpon>
+    <EmbeddedResource Include="IB200252\frmNoviKorisniciIspiti.resx">
+      <DependentUpon>frmNoviKorisniciIspiti.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IB200252\frmPretraga.resx">
       <DependentUpon>frmPretraga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IB200252\frmScanIspitaBrojIndeksa.resx">
+      <DependentUpon>frmScanIspitaBrojIndeksa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Izvjestaji\frmIzvjestaji.resx">
       <DependentUpon>frmIzvjestaji.cs</DependentUpon>

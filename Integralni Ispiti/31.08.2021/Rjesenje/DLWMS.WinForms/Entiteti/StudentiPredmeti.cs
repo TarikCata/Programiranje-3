@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DLWMS.WinForms.Entiteti
@@ -12,10 +11,5 @@ namespace DLWMS.WinForms.Entiteti
         public virtual Student Student { get; set; }
         public int Ocjena { get; set; }
         public DateTime Datum { get; set; }
-        public override string ToString()
-        {
-            return "";
-        }
-
     }
 }
