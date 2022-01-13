@@ -1,4 +1,5 @@
 ﻿using DLWMS.WinForms.Entiteti;
+using DLWMS.WinForms.IB200252;
 using System.Data.Entity;
 
 namespace DLWMS.WinForms.Helpers
@@ -15,6 +16,9 @@ namespace DLWMS.WinForms.Helpers
         public virtual DbSet<StudentiPredmeti> StudentiPredmeti { get; set; }
         public virtual DbSet<Uloga> Uloge { get; set; }
         public virtual DbSet<StudentiPotvrde> StudentiPotvrde { get; set; }
+
+
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -85,13 +85,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entiteti\StudentiPotvrde.cs" />
-    <Compile Include="Forme\frmStudentiPotvrde.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\frmStudentiPotvrde.Designer.cs">
-      <DependentUpon>frmStudentiPotvrde.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmGlavna.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +96,13 @@
     <Compile Include="Helpers\DLWMSdb.cs" />
     <Compile Include="Entiteti\StudentiPredmeti.cs" />
     <Compile Include="Entiteti\Uloge.cs" />
+    <Compile Include="IB200252\frmStudentiPotvrde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IB200252\frmStudentiPotvrde.Designer.cs">
+      <DependentUpon>frmStudentiPotvrde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IB200252\StudentiPotvrde.cs" />
     <Compile Include="Izvjestaji\dsDLWMS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,11 +153,11 @@
     <Compile Include="Entiteti\Spol.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forme\frmStudentiPotvrde.resx">
-      <DependentUpon>frmStudentiPotvrde.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmGlavna.resx">
       <DependentUpon>frmGlavna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IB200252\frmStudentiPotvrde.resx">
+      <DependentUpon>frmStudentiPotvrde.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Izvjestaji\frmIzvjestaji.resx">
       <DependentUpon>frmIzvjestaji.cs</DependentUpon>

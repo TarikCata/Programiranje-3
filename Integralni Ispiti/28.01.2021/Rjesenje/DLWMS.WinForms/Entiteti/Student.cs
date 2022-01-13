@@ -24,7 +24,7 @@ namespace DLWMS.WinForms.Entiteti
         public bool Aktivan { get; set; }
         public virtual Spol Spol { get; set; }
         public List<PolozeniPredmet> PolozeniPredmeti { get; set; }
-        public List<StudentiPotvrde> Potvrde { get; set; }
+        public virtual List<StudentiPredmeti> Uspjeh { get; set; } 
         public virtual ICollection<Uloga> Uloge { get; set; }
         public Student()
         {

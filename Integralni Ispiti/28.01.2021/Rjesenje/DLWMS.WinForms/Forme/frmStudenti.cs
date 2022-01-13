@@ -12,63 +12,127 @@ namespace DLWMS.WinForms.Forme
     {
         KonekcijaNaBazu _baza = DLWMSdb.Baza;
 
-        List<string> godine = new List<string> { "Sve", "1", "2", "3" };
-
-        List<string> aktivnosti = new List<string> { "Svi", "Aktivan", "Neaktivan"};
-
+        private List<string> GodineStudija = new List<string> { "Sve", "1", "2", "3", };
+        private List<string> Aktivnosti = new List<string> { "Svi", "Aktivan", "Neaktivan" };
+        bool aktivan = false;
+        int godinaStudija = 0;
+        string filter;
         public frmStudenti()
         {
             InitializeComponent();
             dgvStudenti.AutoGenerateColumns = false;
+            cmbGodineStudija.DataSource = GodineStudija;
+            cmbAktivnosti.DataSource = Aktivnosti;
         }
 
         private void frmStudenti_Load(object sender, EventArgs e)
         {
-            UcitajPodatkeOStudentima();
-            IzracunajProsjekPrebrojStudente();
-            cmbGodineStudija.DataSource = godine;
-            cmbAktivnosti.DataSource = aktivnosti;
+            UcitajPodatkeOStudentima("svi");
         }
 
-        private void IzracunajProsjekPrebrojStudente(List<Student> students = null)
+        private void UcitajPodatkeOStudentima(string svi)
         {
-            var lista = students ?? _baza.Studenti.ToList();
-            lblBrojStudenata.Text = $"Broj Studenta: {lista.Count.ToString()}";
-            lblProsjecnaOcjena.Text = $"Prosjek ocjena: {Suma(lista).ToString()}";
-        }
+            dgvStudenti.DataSource = null;
+            var lista = new List<Student>();
 
-        private double Suma(List<Student> students)
-        {
-            double s = 0;
-            int brojac = 0;
-            foreach (var student in students)
+            if (svi == "svi")
             {
-                foreach (var predmet in student.PolozeniPredmeti)
-                {
-                    s += predmet.Ocjena;
-                    brojac++;
-                }
+                dgvStudenti.DataSource = _baza.Studenti.ToList();
+                UcitajProsjekPrebroj(_baza.Studenti.ToList());
             }
-            return Math.Round((s/brojac),2);
+            if (cmbGodineStudija.SelectedIndex > 0 && cmbAktivnosti.SelectedIndex > 0)
+            {
+                lista = _baza.Studenti.Where(x => x.GodinaStudija == godinaStudija && x.Aktivan == aktivan).ToList();
+                dgvStudenti.DataSource = lista;
+                UcitajProsjekPrebroj(lista);
+                return;
+            }
+            if (cmbGodineStudija.SelectedIndex > 0 && cmbAktivnosti.SelectedIndex == 0)
+            {
+                lista = _baza.Studenti.Where(x => x.GodinaStudija == godinaStudija).ToList();
+                dgvStudenti.DataSource = lista;
+                UcitajProsjekPrebroj(lista);
+                return;
+            }
+            if (cmbGodineStudija.SelectedIndex == 0 && cmbAktivnosti.SelectedIndex > 0)
+            {
+                lista = _baza.Studenti.Where(x => x.Aktivan == aktivan).ToList();
+                dgvStudenti.DataSource = lista;
+                UcitajProsjekPrebroj(lista);
+                return;
+            }
         }
+
+        private bool validiraj(string text)
+        {
+            var err = new ErrorProvider();
+            if (string.IsNullOrEmpty(text))
+            {
+                err.SetError(txtPretraga, "Ovo polje je obavezno!");
+                return false;
+            }
+            err.Clear();
+            return true;
+        }
+
+        private void txtPretraga_TextChanged(object sender, EventArgs e)
+        {
+            //filter = txtPretraga.Text.ToLower();
+            //UcitajPodatkeOStudentima(string.Empty);
+        }
+        private void cmbGodineStudija_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbGodineStudija.SelectedIndex == 0)
+            {
+                UcitajPodatkeOStudentima("svi");
+                return;
+            }
+            godinaStudija = cmbGodineStudija.SelectedIndex;
+            if (validiraj(txtPretraga.Text))
+                UcitajPodatkeOStudentima(string.Empty);
+        }
+        private void cmbAktivnosti_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbAktivnosti.SelectedIndex == 0)
+            {
+                UcitajPodatkeOStudentima("svi");
+                return;
+            }
+            if(validiraj(txtPretraga.Text))
+            {
+                if (cmbAktivnosti.Text == "Aktivan")
+                    aktivan = true;
+                if (cmbAktivnosti.Text == "Neaktivan")
+                    aktivan = false;
+                UcitajPodatkeOStudentima(string.Empty);
+            }
+        }
+       
         private void btnNoviStudent_Click(object sender, EventArgs e)
         {          
             PrikaziFormu(new frmNoviStudent());
-            UcitajPodatkeOStudentima();
+            UcitajPodatkeOStudentima("svi");
         }
-
-        private void UcitajPodatkeOStudentima(List<Student> studenti = null)
+        private void UcitajProsjekPrebroj(List<Student> students)
         {
-            try
+            if(students.Count == 0)
             {
-                dgvStudenti.DataSource = null;
-                dgvStudenti.DataSource = studenti ?? _baza.Studenti.ToList(); 
-
+                lblBrojStudenata.Text = "Broj studenata: 0";
+                lblProsjek.Text = "Prosjecna ocjena: 0";
+                return;
             }
-            catch (Exception ex)
+            double sum = 0;
+            int brojac = 0;
+            foreach (var student in students)
             {
-                MessageBox.Show($"{ex.Message}{Environment.NewLine}{ex.InnerException}");
+                foreach (var predmet in student.Uspjeh)
+                {
+                    sum += predmet.Ocjena;
+                    brojac++;
+                }
             }
+            lblBrojStudenata.Text = $"Broj studenata: {students.Count}";
+            lblProsjek.Text = $"Prosjecna ocjena: {Math.Round(sum / brojac, 2)}";
         }
 
         private void PrikaziFormu(Form form)
@@ -77,7 +141,6 @@ namespace DLWMS.WinForms.Forme
             form.ShowDialog();
             this.Show();
         }
-
         private void dgvStudenti_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var student = dgvStudenti.SelectedRows[0].DataBoundItem as Student;
@@ -90,84 +153,8 @@ namespace DLWMS.WinForms.Forme
                     form = new frmNoviStudent(student);
                 PrikaziFormu(form);
 
-                UcitajPodatkeOStudentima();
+                UcitajPodatkeOStudentima("svi");
             }
-        }
-        private bool PretragaStudenata(Student s)
-        {
-            return s.Ime.ToLower().Contains(txtPretraga.Text.ToLower())
-                    || s.Prezime.ToLower().Contains(txtPretraga.Text.ToLower());
-        }
-        private void txtPretraga_TextChanged(object sender, EventArgs e)
-        {
-            var filter = txtPretraga.Text.ToLower();
-
-            UcitajPodatkeOStudentima(_baza.Studenti
-              .Where(s => s.Ime.ToLower().Contains(filter)
-                  || s.Prezime.ToLower().Contains(filter)).ToList());
-        }
-
-        private void cmbGodineStudija_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!provider(txtPretraga))
-                return;
-            if (cmbGodineStudija.Text == "Sve")
-                UcitajPodatkeOStudentima();
-            else
-            {
-                var godina = int.Parse(cmbGodineStudija.Text);
-                pretragaGodina(godina);
-            }
-        }
-
-        private void pretragaGodina(int godina)
-        {
-            var lista = _baza.Studenti.Where(x => x.GodinaStudija == godina).ToList();
-            UcitajPodatkeOStudentima(lista);
-            IzracunajProsjekPrebrojStudente(lista);
-        }
-
-        private void cmbAktivnosti_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!provider(txtPretraga))
-                return;
-            if (cmbAktivnosti.Text == "Svi")
-                UcitajPodatkeOStudentima();
-            else
-            {
-                if (cmbAktivnosti.Text == "Aktivan")
-                    ucitajCMBAktivnosti(true);
-                if (cmbAktivnosti.Text == "Neaktivan")
-                    ucitajCMBAktivnosti(false);
-            }
-        }
-
-        private void ucitajCMBAktivnosti(bool tip)
-        {
-            var list = _baza.Studenti.Where(x => x.Aktivan == tip).ToList();
-            UcitajPodatkeOStudentima(list);
-            IzracunajProsjekPrebrojStudente(list);
-        }
-
-        private bool provider(Control control)
-        {
-            var err = new ErrorProvider();
-            if(control is TextBox)
-            {
-                if(control.Text == string.Empty)
-                {
-                    err.SetError(control, "Neka poruka");
-                    return false;
-                }
-            }
-            err.Clear();
-            return true;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmStudentiPotvrde frmStudentiPotvrde = new frmStudentiPotvrde();
-            frmStudentiPotvrde.ShowDialog();
         }
     }
 }

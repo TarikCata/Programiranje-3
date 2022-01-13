@@ -19,7 +19,7 @@ namespace DLWMS.WinForms.Entiteti
     {
         public int Id { get; set; }
         public Predmet Predmet { get; set; }
-        public int Ocjena { get; set; } = 6;
+        public int Ocjena { get; set; }
         public DateTime DatumPolaganja { get; set; }
     }
 }

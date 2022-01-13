@@ -1,11 +1,12 @@
-﻿using System;
+﻿using DLWMS.WinForms.Entiteti;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLWMS.WinForms.Entiteti
+namespace DLWMS.WinForms.IB200252
 {
     [Table("StudentiPotvrde")]
     public class StudentiPotvrde
@@ -14,7 +15,6 @@ namespace DLWMS.WinForms.Entiteti
         public virtual Student Student { get; set; }
         public string Datum { get; set; }
         public string Svrha { get; set; }
-        public int Izdata { get; set; }
+        public bool Izdata { get; set; }
     }
-
 }
