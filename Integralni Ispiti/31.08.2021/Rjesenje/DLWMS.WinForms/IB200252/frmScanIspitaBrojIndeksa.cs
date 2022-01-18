@@ -1,5 +1,6 @@
 ﻿using DLWMS.WinForms.Entiteti;
 using DLWMS.WinForms.Helpers;
+using DLWMS.WinForms.Izvjestaji;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,6 +62,14 @@ namespace DLWMS.WinForms.IB200252
             new frmNoviKorisniciIspiti(new KorisniciIspitiScan() { Student = this.student}, false).ShowDialog();
             this.Show();
             UcitajPodatke();
+        }
+
+        private void btnPrintaj_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var sken = dgvKorisniciScan.DataSource as List<KorisniciIspitiScan>;
+            new frmIzvjestaji(sken).ShowDialog();
+            this.Show();
         }
     }
 }

@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.dgvKorisniciScan = new System.Windows.Forms.DataGridView();
-            this.btnPrintaj = new System.Windows.Forms.Button();
-            this.btnNoiv = new System.Windows.Forms.Button();
-            this.lblKomunikacija = new System.Windows.Forms.Label();
             this.ImeiPrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PolezeniPredmeti = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojPolozenih = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
             this.Ispiti = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnPrintaj = new System.Windows.Forms.Button();
+            this.btnNoiv = new System.Windows.Forms.Button();
+            this.lblKomunikacija = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisniciScan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,34 +60,6 @@
             this.dgvKorisniciScan.Size = new System.Drawing.Size(773, 306);
             this.dgvKorisniciScan.TabIndex = 3;
             this.dgvKorisniciScan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisniciScan_CellContentClick);
-            // 
-            // btnPrintaj
-            // 
-            this.btnPrintaj.Location = new System.Drawing.Point(693, 407);
-            this.btnPrintaj.Name = "btnPrintaj";
-            this.btnPrintaj.Size = new System.Drawing.Size(95, 31);
-            this.btnPrintaj.TabIndex = 7;
-            this.btnPrintaj.Text = "Printaj";
-            this.btnPrintaj.UseVisualStyleBackColor = true;
-            // 
-            // btnNoiv
-            // 
-            this.btnNoiv.Location = new System.Drawing.Point(667, 40);
-            this.btnNoiv.Name = "btnNoiv";
-            this.btnNoiv.Size = new System.Drawing.Size(120, 31);
-            this.btnNoiv.TabIndex = 8;
-            this.btnNoiv.Text = "Dodaj scan ispita";
-            this.btnNoiv.UseVisualStyleBackColor = true;
-            this.btnNoiv.Click += new System.EventHandler(this.btnNoiv_Click);
-            // 
-            // lblKomunikacija
-            // 
-            this.lblKomunikacija.AutoSize = true;
-            this.lblKomunikacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKomunikacija.Location = new System.Drawing.Point(18, 40);
-            this.lblKomunikacija.Name = "lblKomunikacija";
-            this.lblKomunikacija.Size = new System.Drawing.Size(0, 25);
-            this.lblKomunikacija.TabIndex = 9;
             // 
             // ImeiPrezime
             // 
@@ -136,6 +108,35 @@
             this.Ispiti.ReadOnly = true;
             this.Ispiti.Text = "Brisi";
             this.Ispiti.UseColumnTextForButtonValue = true;
+            // 
+            // btnPrintaj
+            // 
+            this.btnPrintaj.Location = new System.Drawing.Point(693, 407);
+            this.btnPrintaj.Name = "btnPrintaj";
+            this.btnPrintaj.Size = new System.Drawing.Size(95, 31);
+            this.btnPrintaj.TabIndex = 7;
+            this.btnPrintaj.Text = "Printaj";
+            this.btnPrintaj.UseVisualStyleBackColor = true;
+            this.btnPrintaj.Click += new System.EventHandler(this.btnPrintaj_Click);
+            // 
+            // btnNoiv
+            // 
+            this.btnNoiv.Location = new System.Drawing.Point(667, 40);
+            this.btnNoiv.Name = "btnNoiv";
+            this.btnNoiv.Size = new System.Drawing.Size(120, 31);
+            this.btnNoiv.TabIndex = 8;
+            this.btnNoiv.Text = "Dodaj scan ispita";
+            this.btnNoiv.UseVisualStyleBackColor = true;
+            this.btnNoiv.Click += new System.EventHandler(this.btnNoiv_Click);
+            // 
+            // lblKomunikacija
+            // 
+            this.lblKomunikacija.AutoSize = true;
+            this.lblKomunikacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKomunikacija.Location = new System.Drawing.Point(18, 40);
+            this.lblKomunikacija.Name = "lblKomunikacija";
+            this.lblKomunikacija.Size = new System.Drawing.Size(0, 25);
+            this.lblKomunikacija.TabIndex = 9;
             // 
             // frmScanIspitaBrojIndeksa
             // 
