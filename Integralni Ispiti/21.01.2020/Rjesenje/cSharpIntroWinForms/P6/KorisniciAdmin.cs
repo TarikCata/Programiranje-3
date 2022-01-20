@@ -39,6 +39,10 @@ namespace cSharpIntroWinForms
 
                 dgvKorisnici.DataSource = null;
                 dgvKorisnici.DataSource = rezultati;
+                if (korisnici != null)
+                    ucitajProsjek(korisnici);
+                else
+                    ucitajProsjek(konekcijaNaBazu.Korisnici.ToList());
 
             }
             catch (Exception ex)
@@ -47,6 +51,45 @@ namespace cSharpIntroWinForms
             }
         }
 
+        private void ucitajProsjek(List<Korisnik> korisnici)
+        {
+            double sum = 0;
+            int brojPredmete = 0;
+            foreach (var korisnik in korisnici)
+            {
+                foreach (var predmet in korisnik.Uspjeh)
+                {
+                    sum += predmet.Ocjena;
+                    brojPredmete++;
+                }
+            }
+            if(sum > 0)
+                lblProsjek.Text = $"Prosjek ocjena: {Math.Round(sum / brojPredmete,2)}";
+            else
+                lblProsjek.Text = $"Prosjek ocjena: 0";
+        }
 
+        private void txtPretraga_TextChanged(object sender, EventArgs e)
+        {
+            List<Korisnik> korisniks = new List<Korisnik>();
+            var txt = txtPretraga.Text.ToLower();
+            foreach (var x in konekcijaNaBazu.Korisnici.ToList())
+            {
+                if(x.Ime.ToLower().Contains(txt) || x.Prezime.ToLower().Contains(txt))
+                    korisniks.Add(x);
+            }
+            LoadData(korisniks);
+        }
+
+        private void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 5)
+            {
+                this.Hide();
+                var obj = dgvKorisnici.CurrentRow.DataBoundItem as Korisnik;
+                new KorisniciPolozeniPredmeti(obj).ShowDialog();
+                this.Show();
+            }
+        }
     }
 }

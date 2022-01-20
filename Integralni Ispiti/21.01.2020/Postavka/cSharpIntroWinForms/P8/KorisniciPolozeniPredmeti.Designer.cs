@@ -45,30 +45,26 @@
             // cmbPredmeti
             // 
             this.cmbPredmeti.FormattingEnabled = true;
-            this.cmbPredmeti.Location = new System.Drawing.Point(16, 11);
-            this.cmbPredmeti.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbPredmeti.Location = new System.Drawing.Point(12, 9);
             this.cmbPredmeti.Name = "cmbPredmeti";
-            this.cmbPredmeti.Size = new System.Drawing.Size(292, 24);
+            this.cmbPredmeti.Size = new System.Drawing.Size(220, 21);
             this.cmbPredmeti.TabIndex = 0;
             // 
             // dtpDatumPolaganja
             // 
-            this.dtpDatumPolaganja.Location = new System.Drawing.Point(459, 12);
-            this.dtpDatumPolaganja.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpDatumPolaganja.Location = new System.Drawing.Point(344, 10);
             this.dtpDatumPolaganja.Name = "dtpDatumPolaganja";
-            this.dtpDatumPolaganja.Size = new System.Drawing.Size(265, 22);
+            this.dtpDatumPolaganja.Size = new System.Drawing.Size(200, 20);
             this.dtpDatumPolaganja.TabIndex = 2;
             // 
             // btnDodajPolozeni
             // 
-            this.btnDodajPolozeni.Location = new System.Drawing.Point(735, 11);
-            this.btnDodajPolozeni.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDodajPolozeni.Location = new System.Drawing.Point(551, 9);
             this.btnDodajPolozeni.Name = "btnDodajPolozeni";
-            this.btnDodajPolozeni.Size = new System.Drawing.Size(140, 28);
+            this.btnDodajPolozeni.Size = new System.Drawing.Size(105, 23);
             this.btnDodajPolozeni.TabIndex = 3;
             this.btnDodajPolozeni.Text = "Dodaj";
             this.btnDodajPolozeni.UseVisualStyleBackColor = true;
-            this.btnDodajPolozeni.Click += new System.EventHandler(this.btnDodajPolozeni_Click);
             // 
             // dgvPolozeniPredmeti
             // 
@@ -79,12 +75,10 @@
             this.Predmet,
             this.Ocjena,
             this.Datum});
-            this.dgvPolozeniPredmeti.Location = new System.Drawing.Point(16, 87);
-            this.dgvPolozeniPredmeti.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvPolozeniPredmeti.Location = new System.Drawing.Point(12, 71);
             this.dgvPolozeniPredmeti.Name = "dgvPolozeniPredmeti";
             this.dgvPolozeniPredmeti.ReadOnly = true;
-            this.dgvPolozeniPredmeti.RowHeadersWidth = 51;
-            this.dgvPolozeniPredmeti.Size = new System.Drawing.Size(859, 249);
+            this.dgvPolozeniPredmeti.Size = new System.Drawing.Size(644, 202);
             this.dgvPolozeniPredmeti.TabIndex = 4;
             // 
             // Predmet
@@ -92,7 +86,6 @@
             this.Predmet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Predmet.DataPropertyName = "Predmet";
             this.Predmet.HeaderText = "Predmet";
-            this.Predmet.MinimumWidth = 6;
             this.Predmet.Name = "Predmet";
             this.Predmet.ReadOnly = true;
             // 
@@ -100,67 +93,61 @@
             // 
             this.Ocjena.DataPropertyName = "Ocjena";
             this.Ocjena.HeaderText = "Ocjena";
-            this.Ocjena.MinimumWidth = 6;
             this.Ocjena.Name = "Ocjena";
             this.Ocjena.ReadOnly = true;
-            this.Ocjena.Width = 125;
             // 
             // Datum
             // 
             this.Datum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Datum.DataPropertyName = "Datum";
             this.Datum.HeaderText = "Datum";
-            this.Datum.MinimumWidth = 6;
             this.Datum.Name = "Datum";
             this.Datum.ReadOnly = true;
             // 
             // cmbOcjene
             // 
             this.cmbOcjene.FormattingEnabled = true;
-            this.cmbOcjene.Location = new System.Drawing.Point(317, 11);
-            this.cmbOcjene.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbOcjene.Location = new System.Drawing.Point(238, 9);
             this.cmbOcjene.Name = "cmbOcjene";
-            this.cmbOcjene.Size = new System.Drawing.Size(132, 24);
+            this.cmbOcjene.Size = new System.Drawing.Size(100, 21);
             this.cmbOcjene.TabIndex = 5;
             // 
             // cbUcitajNepolozene
             // 
             this.cbUcitajNepolozene.AutoSize = true;
-            this.cbUcitajNepolozene.Location = new System.Drawing.Point(16, 44);
-            this.cbUcitajNepolozene.Margin = new System.Windows.Forms.Padding(4);
+            this.cbUcitajNepolozene.Location = new System.Drawing.Point(12, 36);
             this.cbUcitajNepolozene.Name = "cbUcitajNepolozene";
-            this.cbUcitajNepolozene.Size = new System.Drawing.Size(137, 20);
+            this.cbUcitajNepolozene.Size = new System.Drawing.Size(111, 17);
             this.cbUcitajNepolozene.TabIndex = 6;
             this.cbUcitajNepolozene.Text = "Učitaj nepoložene";
             this.cbUcitajNepolozene.UseVisualStyleBackColor = true;
-            this.cbUcitajNepolozene.CheckedChanged += new System.EventHandler(this.cbUcitajNepolozene_CheckedChanged);
+    
             // 
             // btnASYNC
             // 
-            this.btnASYNC.Location = new System.Drawing.Point(16, 367);
-            this.btnASYNC.Margin = new System.Windows.Forms.Padding(4);
+            this.btnASYNC.Location = new System.Drawing.Point(12, 298);
             this.btnASYNC.Name = "btnASYNC";
-            this.btnASYNC.Size = new System.Drawing.Size(100, 28);
+            this.btnASYNC.Size = new System.Drawing.Size(75, 23);
             this.btnASYNC.TabIndex = 7;
             this.btnASYNC.Text = "Run ASYNC";
             this.btnASYNC.UseVisualStyleBackColor = true;
-            this.btnASYNC.Click += new System.EventHandler(this.btnASYNC_Click);
+
             // 
             // btnPrintajUvjerenje
             // 
-            this.btnPrintajUvjerenje.Location = new System.Drawing.Point(667, 367);
-            this.btnPrintajUvjerenje.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPrintajUvjerenje.Location = new System.Drawing.Point(500, 298);
             this.btnPrintajUvjerenje.Name = "btnPrintajUvjerenje";
-            this.btnPrintajUvjerenje.Size = new System.Drawing.Size(199, 28);
+            this.btnPrintajUvjerenje.Size = new System.Drawing.Size(149, 23);
             this.btnPrintajUvjerenje.TabIndex = 7;
             this.btnPrintajUvjerenje.Text = "Printaj uvjerenje";
             this.btnPrintajUvjerenje.UseVisualStyleBackColor = true;
+
             // 
             // KorisniciPolozeniPredmeti
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(881, 410);
+            this.ClientSize = new System.Drawing.Size(661, 333);
             this.Controls.Add(this.btnPrintajUvjerenje);
             this.Controls.Add(this.btnASYNC);
             this.Controls.Add(this.cbUcitajNepolozene);
@@ -169,7 +156,6 @@
             this.Controls.Add(this.btnDodajPolozeni);
             this.Controls.Add(this.dtpDatumPolaganja);
             this.Controls.Add(this.cmbPredmeti);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KorisniciPolozeniPredmeti";
