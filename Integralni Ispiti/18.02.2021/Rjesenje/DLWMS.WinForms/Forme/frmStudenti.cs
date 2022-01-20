@@ -10,12 +10,21 @@ namespace DLWMS.WinForms.Forme
 {
     public partial class frmStudenti : Form
     {
-        KonekcijaNaBazu _baza = DLWMSdb.Baza; 
-
+        KonekcijaNaBazu _baza = DLWMSdb.Baza;
+        List<string> ocjene = new List<string> { "6", "7", "8", "9", "10" };
+        List<string> operatori = new List<string>() { ">", "<", "<=", ">=", "="};
+        DateTime DatumDo;
+        DateTime DatumOd;
+        string Operator;
+        int Ocjena;
         public frmStudenti()
         {
             InitializeComponent();
             dgvStudenti.AutoGenerateColumns = false;
+            cmbOcjene.DataSource = ocjene;
+            cmbOperatori.DataSource = operatori;
+            DatumOd = dtpOd.Value;
+            DatumDo = dtpDo.Value;
         }
 
         private void frmStudenti_Load(object sender, EventArgs e)
@@ -23,25 +32,66 @@ namespace DLWMS.WinForms.Forme
             UcitajPodatkeOStudentima();
         }
 
-        private void btnNoviStudent_Click(object sender, EventArgs e)
-        {          
-            PrikaziFormu(new frmNoviStudent());
+        private void UcitajPodatkeOStudentima()
+        {
+            try
+            {
+                var studentiPredmeti = _baza.StudentiPredmeti.ToList();
+
+                var poDatumu = studentiPredmeti.Where(x => x.Datum >= DatumOd && x.Datum <= DatumDo).ToList();
+
+                var studentiPredmetiFiltrirno = new List<StudentiPredmeti>();
+                if(Operator == "=")
+                    studentiPredmetiFiltrirno = poDatumu.Where(x => x.Ocjena == Ocjena).ToList();
+                else if(Operator == "<")
+                    studentiPredmetiFiltrirno = poDatumu.Where(x => x.Ocjena < Ocjena).ToList();
+                else if (Operator == ">")
+                    studentiPredmetiFiltrirno = poDatumu.Where(x => x.Ocjena > Ocjena).ToList();
+                else if (Operator == "<=")
+                    studentiPredmetiFiltrirno = poDatumu.Where(x => x.Ocjena <= Ocjena).ToList();
+                else if (Operator == ">=")
+                    studentiPredmetiFiltrirno = poDatumu.Where(x => x.Ocjena >= Ocjena).ToList();
+
+                if(studentiPredmetiFiltrirno.Count > 0)
+                {
+                    var studenti = studentiPredmetiFiltrirno.Select(x => x.Student).ToList();
+                    dgvStudenti.DataSource = null;
+                    dgvStudenti.DataSource = studenti;
+                }
+                else
+                    dgvStudenti.DataSource = null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            } 
+        }
+        private void dtpOd_ValueChanged(object sender, EventArgs e)
+        {
+            DatumOd = dtpOd.Value;
             UcitajPodatkeOStudentima();
         }
-
-        private void UcitajPodatkeOStudentima(List<Student> studenti = null)
+        private void dtpDo_ValueChanged(object sender, EventArgs e)
         {
-            dgvStudenti.DataSource = null;
-            dgvStudenti.DataSource = studenti ?? _baza.Studenti.ToList(); 
+            DatumDo = dtpDo.Value;
+            UcitajPodatkeOStudentima();
         }
-
+        private void cmbOperatori_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Operator = cmbOperatori.Text;
+            UcitajPodatkeOStudentima();
+        }
+        private void cmbOcjene_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Ocjena = Convert.ToInt32(cmbOcjene.Text);
+            UcitajPodatkeOStudentima();
+        }
         private void PrikaziFormu(Form form)
         {
             this.Hide();
             form.ShowDialog();
             this.Show();
         }
-
         private void dgvStudenti_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var student = dgvStudenti.SelectedRows[0].DataBoundItem as Student;
@@ -54,21 +104,9 @@ namespace DLWMS.WinForms.Forme
                     form = new frmNoviStudent(student);
                 PrikaziFormu(form);
 
-                UcitajPodatkeOStudentima();
+                //UcitajPodatkeOStudentima(DatumOd, DatumDo);
             }
         }
-        private bool PretragaStudenata(Student s)
-        {
-            return s.Ime.ToLower().Contains(txtPretraga.Text.ToLower())
-                    || s.Prezime.ToLower().Contains(txtPretraga.Text.ToLower());
-        }
-        private void txtPretraga_TextChanged(object sender, EventArgs e)
-        {
-            var filter = txtPretraga.Text.ToLower();
 
-            UcitajPodatkeOStudentima(_baza.Studenti
-              .Where(s => s.Ime.ToLower().Contains(filter)
-                  || s.Prezime.ToLower().Contains(filter)).ToList());
-        }
     }
 }
