@@ -1,5 +1,6 @@
 ﻿using DLWMS.WinForms.Entiteti;
 using DLWMS.WinForms.Helpers;
+using DLWMS.WinForms.Izvjestaji;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,7 +17,7 @@ namespace DLWMS.WinForms.Forme
         private List<string> Aktivnosti = new List<string> { "Svi", "Aktivan", "Neaktivan" };
         bool aktivan = false;
         int godinaStudija = 0;
-        string filter;
+        
         public frmStudenti()
         {
             InitializeComponent();
@@ -155,6 +156,13 @@ namespace DLWMS.WinForms.Forme
 
                 UcitajPodatkeOStudentima("svi");
             }
+        }
+
+        private void btnPrintaj_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new frmIzvjestaji(dgvStudenti.DataSource as List<Student>).ShowDialog();
+            this.Show();
         }
     }
 }

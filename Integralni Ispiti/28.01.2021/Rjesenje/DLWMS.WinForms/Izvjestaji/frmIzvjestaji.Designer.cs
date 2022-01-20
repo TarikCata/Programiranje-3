@@ -32,7 +32,11 @@ namespace DLWMS.WinForms.Izvjestaji
             this.components = new System.ComponentModel.Container();
             this.PorukeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.StudentiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsDLWMS = new DLWMS.WinForms.Izvjestaji.dsDLWMS();
             ((System.ComponentModel.ISupportInitialize)(this.PorukeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsDLWMS)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
@@ -40,21 +44,36 @@ namespace DLWMS.WinForms.Izvjestaji
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "DLWMS.WinForms.Izvjestaji.rptUvjerenjeOPolozenim.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Margin = new System.Windows.Forms.Padding(4);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(623, 632);
+            this.reportViewer1.Size = new System.Drawing.Size(922, 778);
             this.reportViewer1.TabIndex = 0;
+            // 
+            // StudentiBindingSource
+            // 
+            this.StudentiBindingSource.DataMember = "Studenti";
+            this.StudentiBindingSource.DataSource = this.dsDLWMS;
+            // 
+            // dsDLWMS
+            // 
+            this.dsDLWMS.DataSetName = "dsDLWMS";
+            this.dsDLWMS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // frmIzvjestaji
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 632);
+            this.ClientSize = new System.Drawing.Size(922, 778);
             this.Controls.Add(this.reportViewer1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmIzvjestaji";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmIzvjestaji";
             this.Load += new System.EventHandler(this.frmIzvjestaji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PorukeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsDLWMS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -63,5 +82,7 @@ namespace DLWMS.WinForms.Izvjestaji
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource PorukeBindingSource;
+        private System.Windows.Forms.BindingSource StudentiBindingSource;
+        private dsDLWMS dsDLWMS;
     }
 }
