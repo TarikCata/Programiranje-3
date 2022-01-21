@@ -14,7 +14,7 @@ namespace DLWMS.WinForms.Izvjestaji
             InitializeComponent();
         }
 
-        public frmIzvjestaji(List<KorisniciIspitiScan> sken)
+        public frmIzvjestaji(List<KorisniciIspitiScan> sken) : this()
         {
             this.sken = sken;
         }
@@ -23,12 +23,24 @@ namespace DLWMS.WinForms.Izvjestaji
         {
             var rpc = new ReportParameterCollection();
             var rds = new ReportDataSource();
-            var tableScan = new dsDLWMS.ScanDataTable();
-            foreach (var obj in sken)
+
+            var tbl = new dsDLWMS.ScanDataTable();
+            foreach (var x in sken)
             {
-                var red = tableScan.NewRow();
-                
+                var red = tbl.NewScanRow();
+                red.Predmet = x.Predmet.Naziv;
+                red.Napomena = x.Napomena;
+                red.Varanje = x.Varanje ? "Da" : "Ne";
+                tbl.Rows.Add(red);
             }
+
+            rds.Name = "dsScan";
+            rds.Value = tbl;
+
+            this.reportViewer1.LocalReport.DataSources.Add(rds);
+            this.reportViewer1.LocalReport.SetParameters(rpc);
+            this.reportViewer1.RefreshReport();
+            
         }
 
         private void reportViewer1_Load(object sender, System.EventArgs e)
