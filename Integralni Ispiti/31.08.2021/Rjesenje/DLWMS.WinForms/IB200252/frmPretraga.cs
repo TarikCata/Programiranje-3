@@ -27,13 +27,14 @@ namespace DLWMS.WinForms.IB200252
         private void PreuzmiPodatke()
         {
             var PredmetiStudenti = db.StudentiPredmeti.ToList();
-            foreach (var predmetS in PredmetiStudenti)
+            var studenti = PredmetiStudenti.Select(x => x.Student).Distinct().ToList();
+            foreach (var student in studenti)
             {
                 var predmetStudent = new PredmetiStudenti();
-                predmetStudent.Student = predmetS.Student;
+                predmetStudent.Student = student;
                 predmetStudent.Predmet = string.Join(";", PredmetiStudenti.Where(x => x.Student.Id == predmetStudent.Student.Id).Select(x => x.Predmet.Naziv));
-                predmetStudent.BrojPolezenih = PredmetiStudenti.Where(x => x.Student.Id == predmetS.Student.Id).Select(x => x.Predmet).ToList().Count;
-                predmetStudent.Prosjek = PredmetiStudenti.Where(x => x.Student.Id == predmetS.Student.Id).Average(x => x.Ocjena);
+                predmetStudent.BrojPolezenih = PredmetiStudenti.Where(x => x.Student.Id == student.Id).Select(x => x.Predmet).ToList().Count;
+                predmetStudent.Prosjek = PredmetiStudenti.Where(x => x.Student.Id == student.Id).Average(x => x.Ocjena);
                 sviPredmetiStudenti.Add(predmetStudent);
             }
         }

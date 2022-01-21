@@ -27,7 +27,7 @@ namespace DLWMS.WinForms.Izvjestaji
             foreach (var obj in sken)
             {
                 var red = tableScan.NewRow();
-                //red.
+                
             }
         }
 
