@@ -55,17 +55,34 @@ namespace DLWMS.WinForms.Forme
                 if(studentiPredmetiFiltrirno.Count > 0)
                 {
                     var studenti = studentiPredmetiFiltrirno.Select(x => x.Student).ToList();
+                    ProsjekPrebroj(studenti);
                     dgvStudenti.DataSource = null;
                     dgvStudenti.DataSource = studenti;
                 }
                 else
+                {
                     dgvStudenti.DataSource = null;
+                    lblBrojStudenata.Text = $"Broj studenata: 0";
+                    lblProsjek.Text = $"Prosjek ocjena: 0";
+                }
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             } 
         }
+
+        private void ProsjekPrebroj(List<Student> studenti)
+        {
+            double sum = 0;
+            foreach (var student in studenti)
+            {
+                sum = _baza.StudentiPredmeti.Where(x => x.Student.Id == student.Id).Average(x => x.Ocjena);
+            }
+            lblBrojStudenata.Text = $"Broj studenata: {studenti.Count}";
+            lblProsjek.Text = $"Prosjek ocjena: {sum}";
+        }
+
         private void dtpOd_ValueChanged(object sender, EventArgs e)
         {
             DatumOd = dtpOd.Value;
