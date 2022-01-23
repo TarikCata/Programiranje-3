@@ -1,5 +1,4 @@
 ﻿using DLWMS.WinForms.Entiteti;
-using DLWMS.WinForms.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;

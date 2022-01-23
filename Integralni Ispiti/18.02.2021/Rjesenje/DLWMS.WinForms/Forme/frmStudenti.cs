@@ -1,5 +1,6 @@
 ﻿using DLWMS.WinForms.Entiteti;
 using DLWMS.WinForms.Helpers;
+using DLWMS.WinForms.IB200252;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -54,7 +55,7 @@ namespace DLWMS.WinForms.Forme
 
                 if(studentiPredmetiFiltrirno.Count > 0)
                 {
-                    var studenti = studentiPredmetiFiltrirno.Select(x => x.Student).ToList();
+                    var studenti = studentiPredmetiFiltrirno.Select(x => x.Student).Distinct().ToList();
                     ProsjekPrebroj(studenti);
                     dgvStudenti.DataSource = null;
                     dgvStudenti.DataSource = studenti;
@@ -125,5 +126,11 @@ namespace DLWMS.WinForms.Forme
             }
         }
 
+        private void btnCovid_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new frmStudentiCovidTestovi().ShowDialog();
+            this.Show();
+        }
     }
 }

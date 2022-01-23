@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.dgvStudenti = new System.Windows.Forms.DataGridView();
+            this.Indeks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Spol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GodinaStudija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aktivan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Polozeni = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnCovid = new System.Windows.Forms.Button();
             this.lblProsjek = new System.Windows.Forms.Label();
             this.lblBrojStudenata = new System.Windows.Forms.Label();
@@ -39,13 +46,6 @@
             this.cmbOperatori = new System.Windows.Forms.ComboBox();
             this.cmbOcjene = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.Indeks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Spol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GodinaStudija = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Aktivan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Polozeni = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudenti)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,6 +72,70 @@
             this.dgvStudenti.TabIndex = 0;
             this.dgvStudenti.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudenti_CellContentClick);
             // 
+            // Indeks
+            // 
+            this.Indeks.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Indeks.DataPropertyName = "Indeks";
+            this.Indeks.HeaderText = "Indeks";
+            this.Indeks.MinimumWidth = 6;
+            this.Indeks.Name = "Indeks";
+            this.Indeks.ReadOnly = true;
+            // 
+            // Ime
+            // 
+            this.Ime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Ime.DataPropertyName = "Ime";
+            this.Ime.HeaderText = "Ime";
+            this.Ime.MinimumWidth = 6;
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Prezime
+            // 
+            this.Prezime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Prezime.DataPropertyName = "Prezime";
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.MinimumWidth = 6;
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            // 
+            // Spol
+            // 
+            this.Spol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Spol.DataPropertyName = "Spol";
+            this.Spol.HeaderText = "Spol";
+            this.Spol.MinimumWidth = 6;
+            this.Spol.Name = "Spol";
+            this.Spol.ReadOnly = true;
+            // 
+            // GodinaStudija
+            // 
+            this.GodinaStudija.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.GodinaStudija.DataPropertyName = "GodinaStudija";
+            this.GodinaStudija.HeaderText = "Godina studija";
+            this.GodinaStudija.MinimumWidth = 6;
+            this.GodinaStudija.Name = "GodinaStudija";
+            this.GodinaStudija.ReadOnly = true;
+            // 
+            // Aktivan
+            // 
+            this.Aktivan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Aktivan.DataPropertyName = "Aktivan";
+            this.Aktivan.HeaderText = "Aktivan";
+            this.Aktivan.MinimumWidth = 6;
+            this.Aktivan.Name = "Aktivan";
+            this.Aktivan.ReadOnly = true;
+            // 
+            // Polozeni
+            // 
+            this.Polozeni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Polozeni.HeaderText = "Polozeni";
+            this.Polozeni.MinimumWidth = 6;
+            this.Polozeni.Name = "Polozeni";
+            this.Polozeni.ReadOnly = true;
+            this.Polozeni.Text = "Polozeni";
+            this.Polozeni.UseColumnTextForButtonValue = true;
+            // 
             // btnCovid
             // 
             this.btnCovid.Location = new System.Drawing.Point(796, 393);
@@ -81,6 +145,7 @@
             this.btnCovid.TabIndex = 1;
             this.btnCovid.Text = "COVID";
             this.btnCovid.UseVisualStyleBackColor = true;
+            this.btnCovid.Click += new System.EventHandler(this.btnCovid_Click);
             // 
             // lblProsjek
             // 
@@ -160,70 +225,6 @@
             this.label3.Size = new System.Drawing.Size(50, 16);
             this.label3.TabIndex = 10;
             this.label3.Text = "Ocjena";
-            // 
-            // Indeks
-            // 
-            this.Indeks.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Indeks.DataPropertyName = "Indeks";
-            this.Indeks.HeaderText = "Indeks";
-            this.Indeks.MinimumWidth = 6;
-            this.Indeks.Name = "Indeks";
-            this.Indeks.ReadOnly = true;
-            // 
-            // Ime
-            // 
-            this.Ime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Ime.DataPropertyName = "Ime";
-            this.Ime.HeaderText = "Ime";
-            this.Ime.MinimumWidth = 6;
-            this.Ime.Name = "Ime";
-            this.Ime.ReadOnly = true;
-            // 
-            // Prezime
-            // 
-            this.Prezime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Prezime.DataPropertyName = "Prezime";
-            this.Prezime.HeaderText = "Prezime";
-            this.Prezime.MinimumWidth = 6;
-            this.Prezime.Name = "Prezime";
-            this.Prezime.ReadOnly = true;
-            // 
-            // Spol
-            // 
-            this.Spol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Spol.DataPropertyName = "Spol";
-            this.Spol.HeaderText = "Spol";
-            this.Spol.MinimumWidth = 6;
-            this.Spol.Name = "Spol";
-            this.Spol.ReadOnly = true;
-            // 
-            // GodinaStudija
-            // 
-            this.GodinaStudija.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.GodinaStudija.DataPropertyName = "GodinaStudija";
-            this.GodinaStudija.HeaderText = "Godina studija";
-            this.GodinaStudija.MinimumWidth = 6;
-            this.GodinaStudija.Name = "GodinaStudija";
-            this.GodinaStudija.ReadOnly = true;
-            // 
-            // Aktivan
-            // 
-            this.Aktivan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Aktivan.DataPropertyName = "Aktivan";
-            this.Aktivan.HeaderText = "Aktivan";
-            this.Aktivan.MinimumWidth = 6;
-            this.Aktivan.Name = "Aktivan";
-            this.Aktivan.ReadOnly = true;
-            // 
-            // Polozeni
-            // 
-            this.Polozeni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Polozeni.HeaderText = "Polozeni";
-            this.Polozeni.MinimumWidth = 6;
-            this.Polozeni.Name = "Polozeni";
-            this.Polozeni.ReadOnly = true;
-            this.Polozeni.Text = "Polozeni";
-            this.Polozeni.UseColumnTextForButtonValue = true;
             // 
             // frmStudenti
             // 
