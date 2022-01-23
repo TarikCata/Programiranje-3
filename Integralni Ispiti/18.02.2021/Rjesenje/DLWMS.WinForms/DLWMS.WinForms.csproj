@@ -103,6 +103,9 @@
       <DependentUpon>frmStudentiCovidTestovi.cs</DependentUpon>
     </Compile>
     <Compile Include="IB200252\StudentiCovidTestovi.cs" />
+    <Compile Include="Izvjestaji\dsDLWMS.cs">
+      <DependentUpon>dsDLWMS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Izvjestaji\dsDLWMS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

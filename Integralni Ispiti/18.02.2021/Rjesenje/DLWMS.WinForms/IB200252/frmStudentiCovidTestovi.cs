@@ -1,5 +1,6 @@
 ﻿using DLWMS.WinForms.Entiteti;
 using DLWMS.WinForms.Helpers;
+using DLWMS.WinForms.Izvjestaji;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -120,6 +121,15 @@ namespace DLWMS.WinForms.IB200252
                 else
                     return;
             });
+        }
+
+        private void btnPrintaj_Click(object sender, EventArgs e)
+        {
+            if (covidTestovi.Count <= 0)
+                return;
+            this.Hide();
+            new frmIzvjestaji(dgvStudentiCovidTestovi.DataSource as List<StudentiCovidTestovi>).ShowDialog();
+            this.Show();
         }
     }
 }

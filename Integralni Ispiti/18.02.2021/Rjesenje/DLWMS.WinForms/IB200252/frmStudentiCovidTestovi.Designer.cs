@@ -178,6 +178,7 @@
             this.btnPrintaj.TabIndex = 8;
             this.btnPrintaj.Text = "Printaj";
             this.btnPrintaj.UseVisualStyleBackColor = true;
+            this.btnPrintaj.Click += new System.EventHandler(this.btnPrintaj_Click);
             // 
             // cmbStudent
             // 
