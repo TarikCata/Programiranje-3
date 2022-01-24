@@ -15,59 +15,52 @@ namespace DLWMS.WinForms.Forme
 
         private List<string> GodineStudija = new List<string> { "Sve", "1", "2", "3", };
         private List<string> Aktivnosti = new List<string> { "Svi", "Aktivan", "Neaktivan" };
-        bool aktivan = false;
-        int godinaStudija = 0;
-        
+        List<Student> studenit = new List<Student>();
+        string imePrezime;
+        int godinaStudija;
+        bool aktivan;
         public frmStudenti()
         {
             InitializeComponent();
             dgvStudenti.AutoGenerateColumns = false;
-            cmbGodineStudija.DataSource = GodineStudija;
-            cmbAktivnosti.DataSource = Aktivnosti;
         }
 
         private void frmStudenti_Load(object sender, EventArgs e)
         {
-            UcitajPodatkeOStudentima("svi");
+            cmbGodineStudija.DataSource = GodineStudija;
+            cmbAktivnosti.DataSource = Aktivnosti;
+            UcitajPodatkeOStudentima();
         }
 
-        private void UcitajPodatkeOStudentima(string svi)
+        private void UcitajPodatkeOStudentima()
         {
-            dgvStudenti.DataSource = null;
-            var lista = new List<Student>();
+            if (!validiraj())
+                return;
+            else
+            {
+                if (cmbAktivnosti.SelectedIndex == 0 && cmbGodineStudija.SelectedIndex == 0)
+                {
+                   studenit = _baza.Studenti.Where(x => x.Ime.ToLower().Contains(imePrezime) || x.Prezime.ToLower().Contains(imePrezime)).ToList();
+                    UcitajProsjekPrebroj(studenit);
+                }
+                else
+                {
+                   studenit = _baza.Studenti.Where(x =>
+                   x.Aktivan == aktivan &&  
+                   x.GodinaStudija == godinaStudija &&
+                   (x.Ime.ToLower().Contains(imePrezime) || x.Prezime.ToLower().Contains(imePrezime))).ToList();
+                    UcitajProsjekPrebroj(studenit);
+                }
 
-            if (svi == "svi")
-            {
-                dgvStudenti.DataSource = _baza.Studenti.ToList();
-                UcitajProsjekPrebroj(_baza.Studenti.ToList());
-            }
-            if (cmbGodineStudija.SelectedIndex > 0 && cmbAktivnosti.SelectedIndex > 0)
-            {
-                lista = _baza.Studenti.Where(x => x.GodinaStudija == godinaStudija && x.Aktivan == aktivan).ToList();
-                dgvStudenti.DataSource = lista;
-                UcitajProsjekPrebroj(lista);
-                return;
-            }
-            if (cmbGodineStudija.SelectedIndex > 0 && cmbAktivnosti.SelectedIndex == 0)
-            {
-                lista = _baza.Studenti.Where(x => x.GodinaStudija == godinaStudija).ToList();
-                dgvStudenti.DataSource = lista;
-                UcitajProsjekPrebroj(lista);
-                return;
-            }
-            if (cmbGodineStudija.SelectedIndex == 0 && cmbAktivnosti.SelectedIndex > 0)
-            {
-                lista = _baza.Studenti.Where(x => x.Aktivan == aktivan).ToList();
-                dgvStudenti.DataSource = lista;
-                UcitajProsjekPrebroj(lista);
-                return;
+                dgvStudenti.DataSource = null;
+                dgvStudenti.DataSource = studenit;
             }
         }
 
-        private bool validiraj(string text)
+        private bool validiraj()
         {
             var err = new ErrorProvider();
-            if (string.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(txtPretraga.Text))
             {
                 err.SetError(txtPretraga, "Ovo polje je obavezno!");
                 return false;
@@ -78,45 +71,37 @@ namespace DLWMS.WinForms.Forme
 
         private void txtPretraga_TextChanged(object sender, EventArgs e)
         {
-            //filter = txtPretraga.Text.ToLower();
-            //UcitajPodatkeOStudentima(string.Empty);
+            imePrezime = txtPretraga.Text.ToLower();
+            UcitajPodatkeOStudentima();
         }
         private void cmbGodineStudija_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbGodineStudija.SelectedIndex == 0)
+            if(cmbGodineStudija.SelectedIndex > 0)
             {
-                UcitajPodatkeOStudentima("svi");
-                return;
+                godinaStudija = Convert.ToInt32(cmbGodineStudija.Text);
+                UcitajPodatkeOStudentima();
             }
-            godinaStudija = cmbGodineStudija.SelectedIndex;
-            if (validiraj(txtPretraga.Text))
-                UcitajPodatkeOStudentima(string.Empty);
         }
         private void cmbAktivnosti_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbAktivnosti.SelectedIndex == 0)
+            if(cmbAktivnosti.SelectedIndex > 0)
             {
-                UcitajPodatkeOStudentima("svi");
-                return;
-            }
-            if(validiraj(txtPretraga.Text))
-            {
-                if (cmbAktivnosti.Text == "Aktivan")
+                if (cmbAktivnosti.SelectedIndex == 1)
                     aktivan = true;
-                if (cmbAktivnosti.Text == "Neaktivan")
+                if(cmbAktivnosti.SelectedIndex == 2)
                     aktivan = false;
-                UcitajPodatkeOStudentima(string.Empty);
+                UcitajPodatkeOStudentima();
             }
         }
-       
+
         private void btnNoviStudent_Click(object sender, EventArgs e)
-        {          
+        {
             PrikaziFormu(new frmNoviStudent());
-            UcitajPodatkeOStudentima("svi");
+            UcitajPodatkeOStudentima();
         }
         private void UcitajProsjekPrebroj(List<Student> students)
         {
-            if(students.Count == 0)
+            if (students.Count == 0)
             {
                 lblBrojStudenata.Text = "Broj studenata: 0";
                 lblProsjek.Text = "Prosjecna ocjena: 0";
@@ -148,13 +133,13 @@ namespace DLWMS.WinForms.Forme
             Form form = null;
             if (student != null)
             {
-                if (e.ColumnIndex == 6) 
+                if (e.ColumnIndex == 6)
                     form = new frmStudentiPredmeti(student);
                 else
                     form = new frmNoviStudent(student);
                 PrikaziFormu(form);
 
-                UcitajPodatkeOStudentima("svi");
+                UcitajPodatkeOStudentima();
             }
         }
 
