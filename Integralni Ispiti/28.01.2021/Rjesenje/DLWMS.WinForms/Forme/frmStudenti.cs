@@ -31,7 +31,6 @@ namespace DLWMS.WinForms.Forme
             cmbAktivnosti.DataSource = Aktivnosti;
             UcitajPodatkeOStudentima();
         }
-
         private void UcitajPodatkeOStudentima()
         {
             if (!validiraj())
