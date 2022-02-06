@@ -15,7 +15,7 @@ namespace DLWMS.WinForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form forma = new frmStudentiCovidTestovi();
+            Form forma = new frmStudenti();
             Application.Run(forma);
         }
     }
